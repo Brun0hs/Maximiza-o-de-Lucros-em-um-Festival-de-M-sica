@@ -1,22 +1,20 @@
 from scipy.optimize import linprog
 
 # Coeficientes da função objetivo:
-# Maximizar Z = 5000x1 + 3000x2 (lucro por bandas e DJs)
+# Maximizar Z = 5000x1 + 3000x2
 # Como o linprog resolve problemas de minimização, os coeficientes são multiplicados por -1.
 c = [-5000, -3000]
 
 # Coeficientes das restrições:
-# 1ª restrição: 4x1 + 2x2 <= 50 (espaço disponível no palco)
-# 2ª restrição: 2x1 + x2 <= 30 (limitação de técnicos disponíveis)
-# 3ª restrição: 7000x1 + 6000x2 <= 100000 (orçamento disponível)
+# 1ª restrição: 4x1 + 2x2 <= 50 limite palco
+# 2ª restrição: 2x1 + x2 <= 30 limite tecnicos
+# 3ª restrição: 7000x1 + 6000x2 <= 100000 orçamento
 A = [
-    [4, 2],        # Coeficientes da restrição de espaço no palco
-    [2, 1],        # Coeficientes da restrição de técnicos disponíveis
-    [7000, 6000]   # Coeficientes da restrição de orçamento
-]
-
-# Lados direitos das desigualdades:
-# Corresponde aos limites das restrições.
+    [4, 2],
+    [2, 1],
+    [7000, 6000]
+    
+# limites das restrições.
 b = [50, 30, 100000]  
 
 # Limites para as variáveis de decisão (não-negatividade):
